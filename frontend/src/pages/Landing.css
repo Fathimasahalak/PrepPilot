@@ -1,0 +1,59 @@
+.landing-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.landing-content {
+  max-width: 480px;
+  text-align: center;
+}
+
+.landing-brand {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--color-slate);
+  margin: 0 0 1.25rem;
+  text-transform: uppercase;
+}
+
+.landing-tagline {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  line-height: 1.35;
+  color: var(--color-ink);
+  margin: 0 0 1rem;
+  font-weight: 500;
+}
+
+.landing-subtext {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-slate);
+  margin: 0 0 2rem;
+}
+
+.landing-button {
+  background: var(--color-amber);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 1.5rem;
+}
+
+.landing-footer {
+  font-size: 13px;
+  color: var(--color-slate);
+  margin: 0;
+}
+
+.landing-link {
+  color: var(--color-amber);
+  cursor: pointer;
+}

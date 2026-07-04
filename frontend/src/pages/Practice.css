@@ -1,0 +1,130 @@
+.practice-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.practice-card {
+  width: 100%;
+  max-width: 600px;
+  background: var(--color-surface);
+  border-radius: 16px;
+  padding: 2rem 2.25rem;
+  border: 0.5px solid var(--color-border);
+}
+
+.practice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.practice-brand {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--color-ink);
+}
+
+.practice-meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-slate);
+  margin: 0 0 1.5rem;
+}
+
+.practice-question {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  line-height: 1.55;
+  color: var(--color-ink);
+  margin: 0 0 1.5rem;
+}
+
+.practice-textarea {
+  width: 100%;
+  min-height: 120px;
+  border: 0.5px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  padding: 12px 14px;
+  font-size: 14px;
+  color: var(--color-ink);
+  resize: vertical;
+  font-family: var(--font-sans);
+}
+
+.practice-textarea:focus {
+  outline: none;
+  border-color: var(--color-amber);
+}
+
+.practice-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.practice-button {
+  background: var(--color-amber);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.practice-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.practice-button-secondary {
+  background: transparent;
+  color: var(--color-ink);
+  border: 0.5px solid var(--color-border);
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.practice-error {
+  color: var(--color-brick);
+  font-size: 13px;
+  margin: 0.5rem 0 0;
+}
+
+.feedback-score-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.feedback-score {
+  font-family: var(--font-mono);
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.score-good { color: var(--color-sage); }
+.score-mid { color: var(--color-amber); }
+.score-low { color: var(--color-brick); }
+
+.feedback-score-max {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--color-slate);
+}
+
+.feedback-text {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-ink);
+  margin: 0;
+}

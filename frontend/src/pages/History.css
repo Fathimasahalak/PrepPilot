@@ -1,0 +1,108 @@
+.history-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3rem 1rem;
+}
+
+.history-card {
+  width: 100%;
+  max-width: 600px;
+  background: var(--color-surface);
+  border-radius: 16px;
+  padding: 2rem 2.25rem;
+  border: 0.5px solid var(--color-border);
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1.5rem;
+}
+
+.history-title {
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--color-ink);
+}
+
+.history-count {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-slate);
+}
+
+.history-status {
+  font-size: 14px;
+  color: var(--color-slate);
+}
+
+.history-list {
+  border-top: 0.5px solid var(--color-border);
+}
+
+.history-item {
+  border-bottom: 0.5px solid var(--color-border);
+}
+
+.history-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  cursor: pointer;
+}
+
+.history-role {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--color-ink);
+  margin: 0 0 4px;
+}
+
+.history-meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-slate);
+  margin: 0;
+}
+
+.history-score {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.score-good { color: var(--color-sage); }
+.score-mid { color: var(--color-amber); }
+.score-low { color: var(--color-brick); }
+
+.history-detail {
+  padding: 0 0 1rem;
+}
+
+.history-qa {
+  padding: 12px 0;
+  border-top: 0.5px dashed var(--color-border);
+}
+
+.history-qa-question {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--color-ink);
+  margin: 0 0 6px;
+}
+
+.history-qa-answer {
+  font-size: 13px;
+  color: var(--color-slate);
+  margin: 0 0 6px;
+}
+
+.history-qa-feedback {
+  font-size: 13px;
+  color: var(--color-ink);
+  margin: 0;
+}
