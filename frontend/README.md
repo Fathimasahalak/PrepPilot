@@ -1,75 +1,83 @@
-# React + TypeScript + Vite
+# PrepPilot
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An AI-powered interview preparation platform that generates personalized practice questions, evaluates your answers with instant feedback, and tracks your progress over time.
 
-Currently, two official plugins are available:
+**Live app:** [prep-pilot.vercel.app](https://prep-pilot-fv2h8wk9d-fathimas-projects-8a2c8fb5.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## What it does
 
-## React Compiler
+1. Sign up and log in securely (JWT-based authentication)
+2. Tell PrepPilot which role, experience level, target company, and topic you're preparing for
+3. Get 5 AI-generated interview questions tailored to that combination, powered by Google Gemini
+4. Answer each question and receive an instant score (1-10) and feedback
+5. Review your full practice history, with past sessions, questions, answers, and scores saved to your account
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Why I built this
 
-## Expanding the ESLint configuration
+I built PrepPilot while preparing for my own placement interviews (Cognizant Java FSE, TCS NQT). Rather than just using ChatGPT/Gemini directly for practice questions, I wanted a tool that:
+- Generates questions specific to my role, level, and target company's interview style
+- Gives structured, scored feedback instead of a plain chat response
+- Remembers my practice history so I can track improvement over time
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tech stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+**Frontend**
+- React + TypeScript + Vite
+- React Router for navigation
+- Axios for API calls
+- Custom design system (Lora/Inter/IBM Plex Mono, warm paper palette)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+**Backend**
+- Java + Spring Boot
+- Spring Security + JWT for authentication
+- Spring Data JPA + Hibernate
+- PostgreSQL (hosted on Render)
+- Google Gemini API for question generation and answer evaluation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**Deployment**
+- Backend: Docker container on Render
+- Frontend: Vercel
+- Database: Render PostgreSQL
 
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Architecture
 
 ```
+React (Vercel)  →  Spring Boot REST API (Render, Docker)  →  Gemini API
+                              ↓
+                    PostgreSQL (Render)
+```
+
+- JWT tokens issued on login, attached to every request via an Axios interceptor
+- A Spring Security filter validates the token on each request and identifies the current user
+- Each practice session (role/level/company/topic) is linked to the logged-in user; each question/answer/score is linked to its session
+
+## Key features
+
+- **Personalized question generation** — prompts Gemini with role, experience level, company, and topic to produce realistic, targeted questions
+- **AI-scored feedback** — each answer is evaluated and scored out of 10 with a short explanation
+- **Persistent history** — every session and Q&A pair is saved per user in PostgreSQL, viewable later
+- **Secure auth** — passwords hashed with BCrypt, stateless JWT sessions, protected API routes
+
+## Running locally
+
+**Backend**
+```bash
+cd backend
+# add your own Gemini API key + Postgres credentials to
+# src/main/resources/application-local.properties
+./mvnw spring-boot:run -Dspring-boot.run.profiles=local
+```
+
+**Frontend**
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+## Future improvements
+
+- Resume-based question generation
+- Follow-up questions based on the candidate's previous answer
+- Weak-topic tracking across sessions
+- Company-specific question style presets
